@@ -1,0 +1,16 @@
+name: k6 性能冒烟
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  k6-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: grafana/setup-k6-action@v1
+      - uses: grafana/run-k6-action@v1
+        with:
+          path: tests/perf/smoke.js
+          flags: --env BASE_URL=https://quickpizza.grafana.com
