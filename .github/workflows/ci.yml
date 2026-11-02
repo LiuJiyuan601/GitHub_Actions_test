@@ -1,0 +1,16 @@
+name: 我的第一次 CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 打印一行
+        run: echo "GitHub Actions 已经跑起来了"
